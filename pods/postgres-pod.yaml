@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-pod
+  labels:
+    name: postgres-pod
+    app: demo-voting-app
+spec:
+  containers:
+    - name: postgres
+      image: postgres:9.4
+      ports: 
+        - containerPort: 5432
+      env:
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRE_PASSWORD
+          value: "postgres"
+        - name: POSTGRES_HOST_AUTH_METHOD
+          value: trust
+        - name : VOLUME_TYPE
+          value: "EmptyDir"
+        - name: VOLUME_NAME
+          value: "db-data"
+        - name: MOUNTH_PATH
+          value: "/var/lib/postgresql/data" 
